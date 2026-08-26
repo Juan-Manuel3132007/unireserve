@@ -1,0 +1,41 @@
+# --- Variables de entorno (nunca se versionan) ---
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# --- Node / frontend ---
+node_modules/
+dist/
+dist-ssr/
+.vite/
+coverage/
+npm-debug.log*
+yarn-error.log*
+
+# --- Editores y sistema operativo ---
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Datos locales ---
+*.sqlite3
+*.db
+postgres_data/
