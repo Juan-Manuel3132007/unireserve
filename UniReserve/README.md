@@ -8,6 +8,10 @@ Proyecto base para la asignatura **Gestion de la Configuracion**.
 **Estado:** v1.0.0 — funcional de extremo a extremo.
 **Pruebas:** 56 pruebas de backend + 8 de frontend, todas en verde.
 
+> **Nota sobre la estructura:** el proyecto vive en el subdirectorio
+> `UniReserve/` dentro del repositorio. Todos los comandos de este README se
+> ejecutan desde ahí: `cd UniReserve` después de clonar.
+
 ---
 
 ## Tabla de contenido
