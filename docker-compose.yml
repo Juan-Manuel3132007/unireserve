@@ -1,10 +1,10 @@
 # ---------------------------------------------------------------------------
-# UniReserve — entorno local completo con un solo comando:
+# UniReserve — orquestacion del monorepo
 #
-#     docker compose up --build
-#
-# Levanta PostgreSQL, el backend (que aplica migraciones y seed al arrancar)
-# y el frontend servido por Nginx.
+#   git clone --recurse-submodules https://github.com/Juan-Manuel3132007/unireserve.git
+#   cd unireserve
+#   docker compose up --build                  # construye desde los submodulos
+#   docker compose pull && docker compose up   # o usa las imagenes de Docker Hub
 # ---------------------------------------------------------------------------
 
 services:
@@ -17,8 +17,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-unireserve}
     ports:
-      # Se expone solo para poder inspeccionar la base con psql o DBeaver.
-      # El backend NO usa este puerto: se conecta por la red interna.
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -31,6 +29,7 @@ services:
       - unireserve
 
   backend:
+    image: ${DOCKERHUB_USER:-juanma313}/unireserve-backend:${TAG:-latest}
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -55,12 +54,12 @@ services:
       - unireserve
 
   frontend:
+    image: ${DOCKERHUB_USER:-juanma313}/unireserve-frontend:${TAG:-latest}
     build:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        # El navegador del usuario resuelve esta URL desde FUERA de Docker,
-        # por eso apunta a localhost y no al nombre del servicio.
+        # El navegador resuelve esta URL desde FUERA de Docker: por eso es localhost.
         VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
     container_name: unireserve-frontend
     restart: unless-stopped
@@ -73,7 +72,6 @@ services:
 
 volumes:
   postgres_data:
-    driver: local
 
 networks:
   unireserve:

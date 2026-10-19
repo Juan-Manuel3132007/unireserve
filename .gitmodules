@@ -1,0 +1,6 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/Juan-Manuel3132007/unireserve-backend.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/Juan-Manuel3132007/unireserve-frontend.git
