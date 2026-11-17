@@ -39,3 +39,6 @@ Thumbs.db
 *.sqlite3
 *.db
 postgres_data/
+
+# --- Evidencias Congeladas de Sustentacion ---
+docs/sustentacion/EVIDENCIAS_CONGELADAS/
