@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: unireserve-backend-config
+  namespace: unireserve
+  labels:
+    app.kubernetes.io/name: unireserve-backend
+    app.kubernetes.io/part-of: unireserve-system
+data:
+  APP_NAME: "UniReserve API"
+  APP_VERSION: "1.0.0"
+  ENVIRONMENT: "production"
+  DEBUG: "false"
+  LOG_LEVEL: "INFO"
+  CORS_ORIGINS: "http://localhost:3000,http://localhost:5173,http://127.0.0.1:3000"
+  ACCESS_TOKEN_EXPIRE_MINUTES: "60"
+  RUN_SEED: "true"
+  POSTGRES_DB: "unireserve"
+  POSTGRES_USER: "postgres"
